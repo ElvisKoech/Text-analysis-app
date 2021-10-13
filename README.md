@@ -11,7 +11,7 @@
  * Word frequency plot
  * WordCloud plot
  * Stylometry curve
-[Text-analysis-streamlit-app](https://text-analysis-streamlit-app.herokuapp.com/)
+ * [Text-analysis-streamlit-app](https://text-analysis-streamlit-app.herokuapp.com/)
 
  ## Dev Dependencies
  * Python
