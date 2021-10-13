@@ -16,7 +16,7 @@
  ## Dev Dependencies
  * Python
  * Streamlit 
- * Natural Language tOOLKit
+ * Natural Language ToolKit
 
 ## ToDo List
 Features to be added:
