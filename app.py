@@ -17,7 +17,7 @@ from collections import Counter
 
 import nltk_utils
 
-
+st.set_page_config(page_title="text-analysis-streamlit-app")
 
 def plot_wordcloud(docx):
     mywordcloud = WordCloud().generate(docx)
