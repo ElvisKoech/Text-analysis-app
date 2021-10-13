@@ -1,4 +1,4 @@
-# Text-analysis-app
+# Text-analysis-streamlit-app
 ## Overview 
 * Companies deal with huge amounts of data every day, from emails, chats and social media posts, to customer support tickets, and survey responses. However, 80% of this data is unstructured and, therefore, hard to process – not to mention time-consuming if done manually.
 
@@ -11,7 +11,7 @@
  * Word frequency plot
  * WordCloud plot
  * Stylometry curve
-
+[Text-analysis-streamlit-app](https://text-analysis-streamlit-app.herokuapp.com/)
 
  ## Dev Dependencies
  * Python
