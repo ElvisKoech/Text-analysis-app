@@ -16,6 +16,9 @@ import altair as alt
 from collections import Counter
 
 import nltk_utils
+import nltk
+nltk.download('punkt')
+
 
 # download the necessary NLTK corpora for text processing
 TextBlob.download_corpora()
