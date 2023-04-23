@@ -113,8 +113,6 @@ def mytag_visualizer(tagged_docx):
     print(result)
     return result
 
-
-
 def main():
     st.title("Text Analysis App")
 
@@ -125,48 +123,59 @@ def main():
         #text area
         raw_text = st.text_area("Enter Text Here")
         if st.button("Submit"):
-
-            if len(raw_text) > 2:
-                 st.success("processing")
-            elif len(raw_text) == 1:
-                 st.warning("Insufficient Text, minimum is 2")
-            else:
-                st.write("Enter Text")
+            try:
+                if len(raw_text) > 2:
+                    st.success("processing")
+                elif len(raw_text) == 1:
+                    st.warning("Insufficient Text, minimum is 2")
+                elif len(raw_text) == 0:
+                    raise ValueError("Please enter some text to analyze")
+                else:
+                    st.write("Enter Text")
+            except ValueError as ve:
+                st.warning(str(ve))
 
         #layout
         col1,col2 = st.columns(2)
-        processed_text = nfx.remove_stopwords(raw_text)
-        
+
+        if len(raw_text) > 0:
+            processed_text = nfx.remove_stopwords(raw_text)
+        else:
+            processed_text = ""
+
         with col1:
             with st.expander("Original Text"):
-              st.write(raw_text)
+                st.write(raw_text)
 
             with st.expander("Pos Tagged Text"):
-              #tagged_docx = get_pos_tags(raw_text)
-              #st.dataframe(tagged_docx)
-              #components html
-              tagged_docx = TextBlob(raw_text).tags
-              processed_tags = mytag_visualizer(tagged_docx)
-              stc.html(processed_tags,scrolling=True)
+                #tagged_docx = get_pos_tags(raw_text)
+                #st.dataframe(tagged_docx)
+                #components html
+                tagged_docx = TextBlob(raw_text).tags
+                processed_tags = mytag_visualizer(tagged_docx)
+                stc.html(processed_tags,scrolling=True)
 
             with st.expander("Plot Word Freq"):
-              #st.write(raw_text)
-              plot_word_freq(processed_text)
+                #st.write(raw_text)
+                plot_word_freq(processed_text)
 
         with col2:
            
             with st.expander("Processed Text"):
-            
                 st.write(processed_text)
             with st.expander("Plot Wordcloud"):
-                st.success("Wordcloud")
-                plot_wordcloud(processed_text)
-        
-                
+                if len(raw_text) > 0:
+                    st.success("Wordcloud")
+                    plot_wordcloud(processed_text)
+                else:
+                    st.warning("Cannot generate wordcloud without text")
+
             with st.expander("Plot stylometry curve"):
-                st.success("Mendelhall Curve")
-                plot_mendelhall_curve(raw_text)
- 
+                if len(raw_text) > 0:
+                    st.success("Mendelhall Curve")
+                    plot_mendelhall_curve(raw_text)
+                else:
+                    st.warning("Cannot generate stylometry curve without text")
         
     else:
         st.subheader("About")
