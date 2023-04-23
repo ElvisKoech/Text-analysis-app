@@ -17,6 +17,10 @@ from collections import Counter
 
 import nltk_utils
 
+# download the necessary NLTK corpora for text processing
+TextBlob.download_corpora()
+
+
 st.set_page_config(page_title="text-analysis-streamlit-app")
 
 def plot_wordcloud(docx):
